@@ -1,0 +1,6 @@
+add_executable(test_minimgapi_internal_transpose test_internal_transpose.cpp)
+target_link_libraries(test_minimgapi_internal_transpose minimgapi gtest)
+
+add_executable(test_minimgapi test_minimgapi.cpp)
+target_link_libraries(test_minimgapi minimgapi gtest)
+add_test(NAME test_minimgapi COMMAND test_minimgapi)

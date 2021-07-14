@@ -1,0 +1,2 @@
+add_executable(bench_minimgio bench_minimgio.cpp)
+target_link_libraries(bench_minimgio minimgio benchmark)

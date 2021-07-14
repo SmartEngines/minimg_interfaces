@@ -1,0 +1,177 @@
+MINBASE Changelog
+
+
+Version 0.1.0
+22-Mar-2019
+
+
++++ New functionality:
+
++ Added macro MINBASE_API for linkable minbase functionality.
+
++ Added macros MIN_HAVE_CPLUSPLUS and MIN_HAVE_CPLUSPLUS_11 that are defined
+to 1 if the compilation is under c++ and c++11 correspondingly, and to 0
+otherwise.
+
++ Added macro MIN_ALIGNED(N) that is defined to __declspec(align(N)) under MSC
+and to __attribute__((aligned(N))) under other compilers.
+
++ Added header minpreprocessor.h with various generic macros. It replaces old
+header macro_helpers.h. New usable macros in preprocessor.h have prefix MIN_PP_, and
+internal macros have prefix MIN_PPI_.
+
++ Add field MinImg *p_landlord to MinImg. It is intended to store info about entity
+that owns image memory, which can be that same image (if p_landlord in image
+points to the image itself), another MinImg (pointed by p_landlord), or
+non-MinImg (if p_landlord is a null-ptr).
+
++ Added values MINFMT_COUNT and MINTYP_COUNT for enums MinFmt and MinTyp
+correspondingly.
+
++ Added functions MinFormatOfMinType, LogBitSizeOfMinType, ByteSizeOfMinType,
+and MinTypeByMinFormatAndLogSize, to get values of MinTyp by MinFmt and
+value_size and vice versa.
+
++ Added header min_pp_mintyp.h with macros to convert (preprocessor-time)
+names of С/C++ type names to corresponding MinTyp values, MinFmt values,
+and logbit sizes, and macros to repeat for all types that have values in
+MinTyp some other macro passed as argument.
+
++ Added placeholder macros to disable gcc warnings in gcc-9.x, without actual
+warnings added in this version.
+
++ Added tests for functionality from mintyp.h, min_pp_mintyp.h, minimg.h.
+
+
+*** Functionality changes:
+
+* Changed package directory structure: public headers are now in
+include/minbase, and include is added to include_directories in cmake for
+target minbase and anything that links it via target_link_libraries.
+
+* Changed arguments of macro MIN_PREFETCH: added argument MODE, to control
+mode of prefetch.
+
+* Moved macros for warnings suppression to new header warnings.h and
+renamed them to MIN_WARNINGS_SUPPRESSION_BEGIN and MIN_WARNINGS_SUPPRESSION_END.
+
+* Moved namespace minstd to new header minstd.hpp.
+
+* Replace fields int32_t channelDepth and MinFmt format in MinImg with single
+field MinTyp scalar_type.
+
+* Rename fields addressSpace and pScan0 in MinImg to address_space and
+p_zero_line correspondingly.
+
+* Give MinImg it's own name_tag (the same MinImg), beside the typedef.
+
+* Change layout of struct MinImg (address_space is now before p_zero_line).
+
+* Give enums in mintyp.h their own name_tags (same as typedefs), beside the
+typedefs.
+
+* Changed definition of real16_t to be declared as struct with that name right
+away instead of additional name (real16) used for struct and typedef of that name to
+real16_t.
+
+
+!!! Under construction (functionality that was added but not yet meant to be
+used):
+
+! minmeta
+
+! meta_mintyp
+
+! introspection
+
+! magic_switch
+
+
+--- Removed functionality:
+
+- Removed header macro_helpers.h with it's contents (replaced by
+minpreprocessor.h and new macros).
+
+- Removed #include <minutils/stdint-vc.h> in mintyp.h for MSC.
+
+- Removed macro DECLARE_COMPOUND_WITH_TYPEDEF.
+
+
+
+
+
+Version 0.0.5
+02-Aug-2018
+
+
++++ New functionality:
+
++ Added functionality to namespace minstd: conditional.
+
++ Added enum values FMT_INVALID = -1 to MinFmt and TYP_INVALID = -1 to MinTyp.
+
++ Added placeholder macros to disable gcc warnings in gcc-7.x and gcc-8.x,
+without actual warnings added in those versions.
+
+
+### Fixed bugs
+
+# Fixed warning about unknown pragmas in anti-warning macro for gcc.
+
+
+
+
+
+Version 0.0.4
+15-Apr-2017
+
+
++++ New functionality:
+
++ Added namespace minstd for proxying c++11 functionality that is
+implementable in c++03.
+
++ Added the following functionality into namespace minstd: integral_constant,
+true_type, false_type, is_same, enable_if.
+
++ Added uint1_t type for template dispatching.
+
+
+*** Functionality changes:
+
+* Separated C and C++ warnings in include guards.
+
+* Separated warnings in include guards for different versions of gcc: 4.8,
+4.9, 5, 6.
+
+
+### Fixed bugs:
+
+# Fixed definition of IMPLANT_PRAGMA macro under MSVS.
+
+
+
+
+
+Version 0.0.3
+08-Apr-2016
+
+
+### Fixed bugs
+
+# Fixed build under MS Visual Studio.
+
+
+
+
+
+Version 0.0.2
+04-Apr-2016
+
+
+*** Functionality changes:
+
+* Headers minimgbase.h and mingeobase.h renamed to minimg.h and mingeo.h, respectively.
+
+* Some slight cosmetic changes.
+

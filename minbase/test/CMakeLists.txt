@@ -1,0 +1,19 @@
+add_executable(test_minbase_mintyp test_minbase_mintyp.cpp)
+target_link_libraries(test_minbase_mintyp minbase gtest)
+add_test(NAME test_minbase_mintyp COMMAND test_minbase_mintyp)
+
+add_executable(test_minbase_minimg test_minbase_minimg.cpp)
+target_link_libraries(test_minbase_minimg minbase gtest)
+add_test(NAME test_minbase_minimg COMMAND test_minbase_minimg)
+
+#add_executable(test_minbase_introspection test_minbase_introspection.cpp)
+#target_link_libraries(test_minbase_introspection minbase gtest)
+#add_test(NAME test_minbase_introspection COMMAND test_minbase_introspection)
+
+#add_executable(test_minbase_minmeta test_minbase_minmeta.cpp)
+#target_link_libraries(test_minbase_minmeta minbase gtest)
+#add_test(NAME test_minbase_minmeta COMMAND test_minbase_minmeta)
+
+#add_executable(test_minbase_magic_switch test_minbase_magic_switch.cpp)
+#target_link_libraries(test_minbase_magic_switch minbase gtest)
+#add_test(NAME test_minbase_magic_switch COMMAND test_minbase_magic_switch)

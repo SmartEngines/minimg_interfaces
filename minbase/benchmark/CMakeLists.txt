@@ -1,0 +1,2 @@
+add_executable(bench_minbase_typ_to_fmt bench_minbase_typ_to_fmt.cpp)
+target_link_libraries(bench_minbase_typ_to_fmt minbase benchmark)
